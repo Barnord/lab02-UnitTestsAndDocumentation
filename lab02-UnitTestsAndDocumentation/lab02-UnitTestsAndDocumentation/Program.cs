@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace lab02_UnitTestsAndDocumentation
+namespace lab02UnitTestsAndDocumentation
 {
-    class Program
+    public class Program
     {
         static public decimal Balance = 100.00M;
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             UserInterface();
         }
@@ -17,29 +17,60 @@ namespace lab02_UnitTestsAndDocumentation
             Console.WriteLine("Please choose to Deposit, Withdraw, or View your balance with the corresponding word.");
             string input = Console.ReadLine();
 
-            switch (input.ToLower())
+            try
             {
-                case "deposit":
-                    Console.WriteLine("How much would you like to deposit?");
-                    Deposit(Convert.ToDecimal(Console.ReadLine()));
-                    break;
-                case "withdraw":
-                    Console.WriteLine("How much would you like to withdraw?");
-                    Withdraw(Convert.ToDecimal(Console.ReadLine()));
-                    break;
-                case "view":
-                    Console.WriteLine($"Your ballance is {ViewBalance()}");
-                    break;
-                default:
-                    Console.WriteLine("Please enter a valid input.");
-                    break;
+                switch (input.ToLower())
+                {
+                    case "deposit":
+                        Console.WriteLine("How much would you like to deposit?");
+                        Deposit(Convert.ToDecimal(Console.ReadLine()));
+                        Console.WriteLine("Press enter to continue");
+                        Console.ReadLine();
+                        break;
+                    case "withdraw":
+                        Console.WriteLine("How much would you like to withdraw?");
+                        Withdraw(Convert.ToDecimal(Console.ReadLine()));
+                        Console.WriteLine("Press enter to continue");
+                        Console.ReadLine();
+                        break;
+                    case "view":
+                        Console.WriteLine($"Your ballance is {ViewBalance()}");
+                        Console.WriteLine("Press enter to continue");
+                        Console.ReadLine();
+                        break;
+                    default:
+                        Console.WriteLine("Please enter a valid input.");
+                        Console.WriteLine("Press enter to continue");
+                        Console.ReadLine();
+                        break;
+                }
             }
-            UserInterface();
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                Console.Clear();
+                Console.WriteLine("Would you like to make another transaction? (y/n)");
+                string transaction = Console.ReadLine().ToLower();
+                if (transaction == "y" || transaction == "yes" || transaction == "yeah") {
+                    UserInterface();
+                }
+            }
         }
 
         public static decimal Withdraw(decimal withdrawal)
         {
-            return Balance -= withdrawal;
+
+            if ((Balance-withdrawal)>0)
+            {
+                return Balance -= withdrawal;
+            } else
+            {
+                throw new Exception("You cannot overdraw your account!");
+            }
+
         }
 
         public static decimal ViewBalance()

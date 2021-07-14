@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ksBhaUWJ2l8tEJQMfEQ6aIE9N3F286n1OmuIyIL4Y0haa9jYFsrh5O1x9kjIMqMhZd9PT2sAkBU061KaAgGSpw==",
+  "dgSpecHash": "vuEZd45P59+BJcHE+d86Jn6pulM349jyrcxhimH9NXhiuVbFovJdtDqYl5z20ZTdJ/f8exVg671k70vX3Zr+Yg==",
   "success": true,
   "projectFilePath": "C:\\Users\\gordn\\Documents\\projects\\codefellows\\401net\\lab02-UnitTestsAndDocumentation\\lab02-UnitTestsAndDocumentation\\ATMTests\\ATMTests.csproj",
   "expectedPackageFiles": [
